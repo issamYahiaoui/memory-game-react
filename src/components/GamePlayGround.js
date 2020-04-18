@@ -2,11 +2,11 @@ import React, {useState, useEffect} from 'react'
 import {generatePlayGroundCards} from "../utils";
 import Card from "./Card";
 
-
+const size = 18
 const GamePlayGround = ({cardImages}) => {
 
-    const [size, setSize] = useState(  18);
-    const [cards, setCards] = useState(generatePlayGroundCards(18, cardImages));
+
+    const [cards, setCards] = useState(generatePlayGroundCards(size, cardImages));
     const [canFlip, setCanFlip] = useState(false);
     const [firstCard, setFirstCard] = useState(null);
     const [secondCard, setSecondCard] = useState(null);
@@ -14,6 +14,8 @@ const GamePlayGround = ({cardImages}) => {
     const [matchedCards, setMatchedCards] = useState([]);
     const [start, setStart] = useState(false);
     const [tries, setTries] = useState(0);
+
+
 
     const setCardIsFlipped = (cardID, isFlipped) => {
         setCards(prev => prev.map(c => {
@@ -50,11 +52,10 @@ const GamePlayGround = ({cardImages}) => {
         setTimeout(() => {
             setTries(tries+1)
         }, 1000);
-
         const cards = cardImages.filter(c => (c.canFlip === false))
-
         console.log('you found ', cards)
     }
+
     const onSuccessGuess = () => {
         console.log('on success')
 
@@ -62,11 +63,8 @@ const GamePlayGround = ({cardImages}) => {
 
         setCardCanFlip(firstCard.id, false);
         setCardIsFlipped(firstCard.id, false);
-
         setCardCanFlip(secondCard.id, false);
         setCardIsFlipped(secondCard.id, false);
-
-
         resetFirstAndSecondCards();
 
     }
@@ -88,8 +86,6 @@ const GamePlayGround = ({cardImages}) => {
     }
 
     const onCardClick = (card) => {
-
-
         if (!canFlip)
             return;
         console.log('click on card ', card)
@@ -109,7 +105,7 @@ const GamePlayGround = ({cardImages}) => {
         setTimeout(() => {
             let index = 0;
             setAllCardsFlipped(true)
-            setTimeout(() => setCanFlip(true));
+            setCanFlip(true)
         }, 3000);
     }
 
@@ -156,15 +152,6 @@ const GamePlayGround = ({cardImages}) => {
     return (
         <div>
             <div className="header">
-               {/*<div className="size">*/}
-               {/*    <label htmlFor="sizeSelect">Size: </label>*/}
-               {/*    <select onChange={e=>setSize(e.target.value * 2)} name="" id="sizeSelect">*/}
-               {/*        <option value="6">6</option>*/}
-               {/*        <option value="7">7</option>*/}
-               {/*        <option value="8">8</option>*/}
-               {/*        <option value="9">9</option>*/}
-               {/*    </select>*/}
-               {/*</div>*/}
                <div className="result">
                    {
                        start ? `You found ${matchedCards.length} out of ${size / 2 } pairs with ${tries} tries  ` : "Find All The Pairs"
