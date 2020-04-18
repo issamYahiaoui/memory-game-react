@@ -7,6 +7,12 @@ body {
   width: 50%;
   margin: 20px auto;
   border-radius: 10px; }
+  #root .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding: 10px; }
   #root .playground {
     display: flex;
     flex-wrap: wrap;
@@ -26,7 +32,6 @@ body {
       position: relative; }
       #root .playground .card div {
         padding: 5px 0px 5px 0px;
-        margin: 5px;
         backface-visibility: hidden;
         position: absolute;
         top: 0;

@@ -11,6 +11,13 @@ body {
   margin: 20px auto;
   border-radius: 10px;
 
+  .header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding :10px
+  }
   .playground {
     display: flex;
     flex-wrap: wrap;
@@ -32,7 +39,7 @@ body {
       position: relative;
       div {
         padding: 5px 0px 5px 0px;
-        margin: 5px;
+        //margin: 5px;
         backface-visibility: hidden;
         position: absolute;
         top: 0;

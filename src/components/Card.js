@@ -1,8 +1,8 @@
 import React from "react";
 import Image from "./CardImage";
 
-export default function Card({imageURL, close, complete}) {
-    return  <div className={"card" + (!close ? ' opened' : '') + (complete ? ' matched' : '')}>
+export default function Card({imageURL, isFlipped, canFlip,onClick}) {
+    return  <div className={"card" + (!isFlipped ? ' opened' : '') + (!canFlip ? ' matched' : '')} onClick={onClick}>
         <div className="front">
             ?
         </div>
