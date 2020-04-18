@@ -15,7 +15,7 @@ const GamePlayGround = ({cardImages}) => {
     const [tries, setTries] = useState(0);
 
 
-
+    //flip card
     const setCardFlipped = (cardID, isFlipped) => {
         setCards(prevCard => prevCard.map(card => {
             if (card.id !== cardID)
@@ -23,11 +23,14 @@ const GamePlayGround = ({cardImages}) => {
             return {...card, isFlipped};
         }));
     }
+    //flip all cards
     const setAllCardsFlipped = (isFlipped) => {
         setCards(prevCard => prevCard.map(card => {
             return {...card, isFlipped};
         }));
     }
+
+    // lock/unlock card
     const setCardCanFlip = (cardID, canFlip) => {
         setCards(prevCard => prevCard.map(card => {
             if (card.id !== cardID)
@@ -35,31 +38,32 @@ const GamePlayGround = ({cardImages}) => {
             return {...card, canFlip};
         }));
     }
+    // lock/unlock all cards
     const setAllCardsCanFlip = ( canFlip) => {
         setCards(prev => prev.map(c => {
             return {...c, canFlip};
         }));
     }
 
+
+    // reset the guess
     const resetFirstAndSecondCards = () => {
         setFirstCard(null);
         setSecondCard(null);
     }
 
+    // get score [tries ]
     const getScore = () => {
         // set number of tries
         setTimeout(() => {
             setTries(tries+1)
         }, 1000);
-        const cards = cardImages.filter(c => (c.canFlip === false))
-        console.log('you found ', cards)
     }
 
+    // handle success on guess
     const onSuccessGuess = () => {
-        console.log('on success', [firstCard,secondCard] )
 
         setMatchedCards([...matchedCards, [firstCard, secondCard]])
-
 
         setCardCanFlip(firstCard.id, false);
         setCardFlipped(firstCard.id, false);
@@ -69,8 +73,10 @@ const GamePlayGround = ({cardImages}) => {
         resetFirstAndSecondCards();
 
     }
+
+    // handle failure on guess
     const onFailureGuess = () => {
-        console.log('on failure')
+
         const firstCardID = firstCard.id;
         const secondCardID = secondCard.id;
 
@@ -86,15 +92,21 @@ const GamePlayGround = ({cardImages}) => {
 
     }
 
+
+    // handle card click
     const onCardClick = (card) => {
+        window.card = card
+
+
         if (!canFlip)
             return;
-        console.log('click on card ', card)
         if (!card.canFlip)
             return;
 
+        //click on same flipped card
         if ((firstCard && (card.id === firstCard.id) || (secondCard && (card.id === secondCard.id))))
             return;
+
 
         setCardFlipped(card.id, false);
 
@@ -102,14 +114,18 @@ const GamePlayGround = ({cardImages}) => {
     }
 
 
+
+    // initialize : flip all cards at the beginning
     const initialize = () =>{
         setTimeout(() => {
             let index = 0;
             setAllCardsFlipped(true)
-            setCanFlip(true)
+            setCanFlip(true) // unlock the flippping
         }, 3000);
     }
 
+
+    //restart the game
     const restart = ()=>{
         setAllCardsFlipped(true)
         setAllCardsCanFlip(true)
@@ -120,7 +136,7 @@ const GamePlayGround = ({cardImages}) => {
     }
 
 
-    // showcase
+
     useEffect(() => {
         initialize()
     }, []);
@@ -135,8 +151,8 @@ const GamePlayGround = ({cardImages}) => {
     }, [firstCard, secondCard])
 
     useEffect(() => {
-        console.log('matchedcards ... ', matchedCards)
         if(matchedCards.length === size/2) {
+            // to control the end result message
             setEnd(true)
         }
     }, [matchedCards]);
@@ -144,15 +160,13 @@ const GamePlayGround = ({cardImages}) => {
 
 
     useEffect(() => {
-        console.log('start ... ', start)
+        // to control the result message
         if(!start && !secondCard && firstCard) {
-            console.log('setstart ... ', start)
             setStart(true)
         }
     }, [firstCard]);
 
 
-    console.log('cardImages ...', cards)
     return (
         <div>
             <div className="header">
@@ -169,7 +183,6 @@ const GamePlayGround = ({cardImages}) => {
                 </div>
             </div>
             <div className="playground">
-
                 {cards.map(card => <Card onClick={() => onCardClick(card)} key={card.id} {...card}/>)}
             </div>
         </div>)
