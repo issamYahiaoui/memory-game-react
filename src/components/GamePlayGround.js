@@ -22,10 +22,20 @@ const GamePlayGround = ({cardImages}) => {
             return {...c, isFlipped};
         }));
     }
+    const setAllCardsFlipped = (isFlipped) => {
+        setCards(prev => prev.map(c => {
+            return {...c, isFlipped};
+        }));
+    }
     const setCardCanFlip = (cardID, canFlip) => {
         setCards(prev => prev.map(c => {
             if (c.id !== cardID)
                 return c;
+            return {...c, canFlip};
+        }));
+    }
+    const setAllCardsCanFlip = ( canFlip) => {
+        setCards(prev => prev.map(c => {
             return {...c, canFlip};
         }));
     }
@@ -98,11 +108,18 @@ const GamePlayGround = ({cardImages}) => {
     const initialize = () =>{
         setTimeout(() => {
             let index = 0;
-            for (const card of cards) {
-                setTimeout(() => setCardIsFlipped(card.id, true), index++ * 100);
-            }
-            setTimeout(() => setCanFlip(true), cards.length * 100);
+            setAllCardsFlipped(true)
+            setTimeout(() => setCanFlip(true));
         }, 3000);
+    }
+
+    const restart = ()=>{
+        setAllCardsFlipped(true)
+        setAllCardsCanFlip(true)
+        setCanFlip(true)
+        resetFirstAndSecondCards();
+        setTries(0)
+        setMatchedCards([])
     }
 
 
@@ -154,9 +171,9 @@ const GamePlayGround = ({cardImages}) => {
                    }
                </div>
 
-                {/*<div className="restart">*/}
-                {/*    <button onClick={()=>restart()}>Restart</button>*/}
-                {/*</div>*/}
+                <div className="restart">
+                    <button onClick={()=>restart()}>Restart</button>
+                </div>
             </div>
             <div className="playground">
 
