@@ -3,10 +3,10 @@ import {generatePlayGroundCards} from "../utils";
 import Card from "./Card";
 
 
-const GamePlayGround = ({cardImages, size}) => {
+const GamePlayGround = ({cardImages}) => {
 
-
-    const [cards, setCards] = useState(generatePlayGroundCards(size, cardImages));
+    const [size, setSize] = useState(  18);
+    const [cards, setCards] = useState(generatePlayGroundCards(18, cardImages));
     const [canFlip, setCanFlip] = useState(false);
     const [firstCard, setFirstCard] = useState(null);
     const [secondCard, setSecondCard] = useState(null);
@@ -14,7 +14,6 @@ const GamePlayGround = ({cardImages, size}) => {
     const [matchedCards, setMatchedCards] = useState([]);
     const [start, setStart] = useState(false);
     const [tries, setTries] = useState(0);
-
 
     const setCardIsFlipped = (cardID, isFlipped) => {
         setCards(prev => prev.map(c => {
@@ -96,8 +95,7 @@ const GamePlayGround = ({cardImages, size}) => {
     }
 
 
-    // showcase
-    useEffect(() => {
+    const initialize = () =>{
         setTimeout(() => {
             let index = 0;
             for (const card of cards) {
@@ -105,7 +103,14 @@ const GamePlayGround = ({cardImages, size}) => {
             }
             setTimeout(() => setCanFlip(true), cards.length * 100);
         }, 3000);
+    }
+
+
+    // showcase
+    useEffect(() => {
+        initialize()
     }, []);
+
 
     useEffect(() => {
         if (!firstCard || !secondCard)
@@ -118,6 +123,8 @@ const GamePlayGround = ({cardImages, size}) => {
     useEffect(() => {
         console.log('matchedcards ... ', matchedCards)
     }, [matchedCards]);
+
+
 
     useEffect(() => {
         console.log('start ... ', start)
@@ -132,24 +139,24 @@ const GamePlayGround = ({cardImages, size}) => {
     return (
         <div>
             <div className="header">
-               <div className="size">
-                   <label htmlFor="sizeSelect">Size: </label>
-                   <select onChange={(v)=>setSize(v)} name="" id="sizeSelect">
-                       <option value="6">6</option>
-                       <option value="7">7</option>
-                       <option value="8">8</option>
-                       <option value="9">9</option>
-                   </select>
-               </div>
+               {/*<div className="size">*/}
+               {/*    <label htmlFor="sizeSelect">Size: </label>*/}
+               {/*    <select onChange={e=>setSize(e.target.value * 2)} name="" id="sizeSelect">*/}
+               {/*        <option value="6">6</option>*/}
+               {/*        <option value="7">7</option>*/}
+               {/*        <option value="8">8</option>*/}
+               {/*        <option value="9">9</option>*/}
+               {/*    </select>*/}
+               {/*</div>*/}
                <div className="result">
                    {
                        start ? `You found ${matchedCards.length} out of ${size / 2 } pairs with ${tries} tries  ` : "Find All The Pairs"
                    }
                </div>
 
-                <div className="restart">
-                    <button>Restart</button>
-                </div>
+                {/*<div className="restart">*/}
+                {/*    <button onClick={()=>restart()}>Restart</button>*/}
+                {/*</div>*/}
             </div>
             <div className="playground">
 

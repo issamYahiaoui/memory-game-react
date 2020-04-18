@@ -7,9 +7,11 @@ import GamePlayGround from "./components/GamePlayGround";
 
 function App() {
 
+
+
   return (
     <div className="">
-      <GamePlayGround cardImages={cardImages} size={18} />
+      <GamePlayGround cardImages={cardImages}/>
     </div>
   );
 }
