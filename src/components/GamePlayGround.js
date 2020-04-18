@@ -5,35 +5,34 @@ import Card from "./Card";
 const size = 18
 const GamePlayGround = ({cardImages}) => {
 
-
     const [cards, setCards] = useState(generatePlayGroundCards(size, cardImages));
     const [canFlip, setCanFlip] = useState(false);
     const [firstCard, setFirstCard] = useState(null);
     const [secondCard, setSecondCard] = useState(null);
-
     const [matchedCards, setMatchedCards] = useState([]);
     const [start, setStart] = useState(false);
+    const [end, setEnd] = useState(false);
     const [tries, setTries] = useState(0);
 
 
 
-    const setCardIsFlipped = (cardID, isFlipped) => {
-        setCards(prev => prev.map(c => {
-            if (c.id !== cardID)
-                return c;
-            return {...c, isFlipped};
+    const setCardFlipped = (cardID, isFlipped) => {
+        setCards(prevCard => prevCard.map(card => {
+            if (card.id !== cardID)
+                return card;
+            return {...card, isFlipped};
         }));
     }
     const setAllCardsFlipped = (isFlipped) => {
-        setCards(prev => prev.map(c => {
-            return {...c, isFlipped};
+        setCards(prevCard => prevCard.map(card => {
+            return {...card, isFlipped};
         }));
     }
     const setCardCanFlip = (cardID, canFlip) => {
-        setCards(prev => prev.map(c => {
-            if (c.id !== cardID)
-                return c;
-            return {...c, canFlip};
+        setCards(prevCard => prevCard.map(card => {
+            if (card.id !== cardID)
+                return card;
+            return {...card, canFlip};
         }));
     }
     const setAllCardsCanFlip = ( canFlip) => {
@@ -57,14 +56,16 @@ const GamePlayGround = ({cardImages}) => {
     }
 
     const onSuccessGuess = () => {
-        console.log('on success')
+        console.log('on success', [firstCard,secondCard] )
 
         setMatchedCards([...matchedCards, [firstCard, secondCard]])
 
+
         setCardCanFlip(firstCard.id, false);
-        setCardIsFlipped(firstCard.id, false);
+        setCardFlipped(firstCard.id, false);
         setCardCanFlip(secondCard.id, false);
-        setCardIsFlipped(secondCard.id, false);
+        setCardFlipped(secondCard.id, false);
+
         resetFirstAndSecondCards();
 
     }
@@ -74,10 +75,10 @@ const GamePlayGround = ({cardImages}) => {
         const secondCardID = secondCard.id;
 
         setTimeout(() => {
-            setCardIsFlipped(firstCardID, true);
+            setCardFlipped(firstCardID, true);
         }, 1000);
         setTimeout(() => {
-            setCardIsFlipped(secondCardID, true);
+            setCardFlipped(secondCardID, true);
         }, 1200);
 
 
@@ -95,7 +96,7 @@ const GamePlayGround = ({cardImages}) => {
         if ((firstCard && (card.id === firstCard.id) || (secondCard && (card.id === secondCard.id))))
             return;
 
-        setCardIsFlipped(card.id, false);
+        setCardFlipped(card.id, false);
 
         (firstCard) ? setSecondCard(card) : setFirstCard(card);
     }
@@ -135,6 +136,9 @@ const GamePlayGround = ({cardImages}) => {
 
     useEffect(() => {
         console.log('matchedcards ... ', matchedCards)
+        if(matchedCards.length === size/2) {
+            setEnd(true)
+        }
     }, [matchedCards]);
 
 
@@ -154,7 +158,9 @@ const GamePlayGround = ({cardImages}) => {
             <div className="header">
                <div className="result">
                    {
-                       start ? `You found ${matchedCards.length} out of ${size / 2 } pairs with ${tries} tries  ` : "Find All The Pairs"
+                       start ? end? "Congratulation ! You found all pairs" :
+                           `You found ${matchedCards.length} out of ${size / 2 } pairs with ${tries} tries  `
+                           : "Find All The Pairs"
                    }
                </div>
 
