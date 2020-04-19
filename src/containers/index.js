@@ -29,7 +29,6 @@ class App extends Component {
 
     render() {
         const {  memory : {cards, size, tries, matchedCards, startGame, endGame, canFlip }, restart, flipCard, resize } = this.props;
-        console.log('props' , this.props)
         return (
             <div>
                <Header
@@ -45,7 +44,6 @@ class App extends Component {
                <CardsList
                    cards={cards}
                    flip={flipCard}
-                   size={size}
                />
             </div>
         )
