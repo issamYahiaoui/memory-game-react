@@ -14,7 +14,7 @@ export const generatePlayGroundCards = (count=18, cardImages=cardsImages)=> {
         .slice(0, count / 2)
         .map(imageURL => ({
             id: uuid(),
-            imageURL: "memory-game-react/images/cards/" + imageURL,
+            imageURL: "images/cards/" + imageURL,
             isFlipped: false,
             canFlip: true
         }))
