@@ -1,12 +1,12 @@
 import React from 'react';
 import { Provider } from 'react-redux'
 import RootContainer from './containers'
-import createStore from './redux/reducers'
+import store from './redux/createStore'
 
 import './App.scss';
 
 function App() {
-  const store = createStore()
+
   return (
       <Provider store={store}>
           <RootContainer />

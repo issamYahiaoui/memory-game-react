@@ -19,7 +19,7 @@ class App extends Component {
 
     render() {
         const { memory, actions } = this.props;
-
+        console.log('props' , this.props)
         return (
             <div className="container">
                <CardsList cardImages={cardImages} />
