@@ -1,22 +1,25 @@
 {
   "files": {
-    "main.css": "/memory-game-react/static/css/main.31b6e13f.chunk.css",
-    "main.js": "/memory-game-react/static/js/main.f50fc6f1.chunk.js",
-    "main.js.map": "/memory-game-react/static/js/main.f50fc6f1.chunk.js.map",
+    "main.css": "/memory-game-react/static/css/main.57db7006.chunk.css",
+    "main.js": "/memory-game-react/static/js/main.ef741d42.chunk.js",
+    "main.js.map": "/memory-game-react/static/js/main.ef741d42.chunk.js.map",
     "runtime-main.js": "/memory-game-react/static/js/runtime-main.03ee08ef.js",
     "runtime-main.js.map": "/memory-game-react/static/js/runtime-main.03ee08ef.js.map",
-    "static/js/2.7868a584.chunk.js": "/memory-game-react/static/js/2.7868a584.chunk.js",
-    "static/js/2.7868a584.chunk.js.map": "/memory-game-react/static/js/2.7868a584.chunk.js.map",
+    "static/css/2.cdf5201b.chunk.css": "/memory-game-react/static/css/2.cdf5201b.chunk.css",
+    "static/js/2.bf0a2345.chunk.js": "/memory-game-react/static/js/2.bf0a2345.chunk.js",
+    "static/js/2.bf0a2345.chunk.js.map": "/memory-game-react/static/js/2.bf0a2345.chunk.js.map",
     "index.html": "/memory-game-react/index.html",
-    "precache-manifest.e3e675248136767bb988d573a5413e1d.js": "/memory-game-react/precache-manifest.e3e675248136767bb988d573a5413e1d.js",
+    "precache-manifest.66bbe813b4c05dc10beb214fe9bc85d7.js": "/memory-game-react/precache-manifest.66bbe813b4c05dc10beb214fe9bc85d7.js",
     "service-worker.js": "/memory-game-react/service-worker.js",
-    "static/css/main.31b6e13f.chunk.css.map": "/memory-game-react/static/css/main.31b6e13f.chunk.css.map",
-    "static/js/2.7868a584.chunk.js.LICENSE.txt": "/memory-game-react/static/js/2.7868a584.chunk.js.LICENSE.txt"
+    "static/css/2.cdf5201b.chunk.css.map": "/memory-game-react/static/css/2.cdf5201b.chunk.css.map",
+    "static/css/main.57db7006.chunk.css.map": "/memory-game-react/static/css/main.57db7006.chunk.css.map",
+    "static/js/2.bf0a2345.chunk.js.LICENSE.txt": "/memory-game-react/static/js/2.bf0a2345.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.03ee08ef.js",
-    "static/js/2.7868a584.chunk.js",
-    "static/css/main.31b6e13f.chunk.css",
-    "static/js/main.f50fc6f1.chunk.js"
+    "static/css/2.cdf5201b.chunk.css",
+    "static/js/2.bf0a2345.chunk.js",
+    "static/css/main.57db7006.chunk.css",
+    "static/js/main.ef741d42.chunk.js"
   ]
 }
