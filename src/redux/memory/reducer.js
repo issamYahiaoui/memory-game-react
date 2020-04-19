@@ -1,13 +1,14 @@
 import actions from './actions'
+import { generatePlayGroundCards } from '../../data/cards'
 
 const initialState = {
     loading:false,
     error:'',
-    cards : [],
+    cards : generatePlayGroundCards(),
     round : 0,
     guess1 : null,
     guess2 : null,
-    try : 0,
+    size : 18
 }
 
 export default function reducer(state = initialState, action) {

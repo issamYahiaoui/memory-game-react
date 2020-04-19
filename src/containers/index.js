@@ -1,28 +1,34 @@
-import React, { Component, PropTypes }  from 'react'
-import { bindActionCreators } from 'redux'
+import React, { Component }  from 'react'
 import { connect } from 'react-redux'
-import cardImages from '../cardImages'
-// import Header from '../components/Header'
-import CardsList from '../components/CardsList'
-import * as MemoryActions from '../redux/memory/actions'
+import CardsList from '../components/CardsListNew'
+import MemoryActions from '../redux/memory/actions'
 
 
 const mapStateToProps = ({memory}) => ({
     memory
 });
 
-const mapDispatchToProps = (dispatch) => ({
-    actions: bindActionCreators(MemoryActions, dispatch)
-});
+const mapDispatchToProps = (dispatch) => {
+    return {
+        initialize: () => dispatch({type : MemoryActions.INITIALIZE}),
+    }
+}
+
 
 class App extends Component {
 
+
+    componentDidMount() {
+        this.props.initialize()
+    }
+
+
     render() {
-        const { memory, actions } = this.props;
+        const {  memory : {cards} } = this.props;
         console.log('props' , this.props)
         return (
             <div className="container">
-               <CardsList cardImages={cardImages} />
+               <CardsList cards={cards}  />
             </div>
         )
     }

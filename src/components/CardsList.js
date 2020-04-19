@@ -167,25 +167,25 @@ const CardsList = ({cardImages}) => {
     }, [firstCard]);
 
 
-    return (
-        <div>
-            <div className="header">
-               <div className="result">
-                   {
-                       start ? end? "Congratulation ! You found all pairs" :
-                           `You found ${matchedCards.length} out of ${size / 2 } pairs with ${tries} tries  `
-                           : "Find All The Pairs"
-                   }
-               </div>
+        return (
+            <div>
+                <div className="header">
+                   <div className="result">
+                       {
+                           start ? end? "Congratulation ! You found all pairs" :
+                               `You found ${matchedCards.length} out of ${size / 2 } pairs with ${tries} tries  `
+                               : "Find All The Pairs"
+                       }
+                   </div>
 
-                <div className="restart">
-                    <button onClick={()=>restart()}>Restart</button>
+                    <div className="restart">
+                        <button onClick={()=>restart()}>Restart</button>
+                    </div>
                 </div>
-            </div>
-            <div className="playground">
-                {cards.map(card => <CardListItem onClick={() => onCardClick(card)} key={card.id} {...card}/>)}
-            </div>
-        </div>)
+                <div className="playground">
+                    {cards.map(card => <CardListItem onClick={() => onCardClick(card)} key={card.id} {...card}/>)}
+                </div>
+            </div>)
 
 }
 
