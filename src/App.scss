@@ -18,7 +18,13 @@ body {
     justify-content: space-between;
     margin-bottom: 20px;
     padding :10px;
-
+    .left {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width : 40%;
+      float: left;
+    }
     .matched {
       color : red
   }
@@ -32,7 +38,8 @@ body {
     //background: #f4f5f7;
 
     .card {
-      width: 15%;
+
+      width : 15%;
       user-select: none;
       height: 110px;
       padding: 10px;
@@ -67,7 +74,7 @@ body {
       }
       .back {
         transform: rotateY(180deg);
-        line-height: 110px;
+        //line-height: 110px;
         img {
           vertical-align: middle;
           width: 70%;

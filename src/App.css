@@ -14,6 +14,12 @@ body {
     justify-content: space-between;
     margin-bottom: 20px;
     padding: 10px; }
+    #root .header .left {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 40%;
+      float: left; }
     #root .header .matched {
       color: red; }
   #root .playground {
@@ -53,8 +59,7 @@ body {
         align-items: center;
         justify-content: center; }
       #root .playground .card .back {
-        transform: rotateY(180deg);
-        line-height: 110px; }
+        transform: rotateY(180deg); }
         #root .playground .card .back img {
           vertical-align: middle;
           width: 70%; }

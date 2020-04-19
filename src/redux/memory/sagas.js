@@ -158,20 +158,30 @@ function* FLIP_CARD({payload : {card}}){
         }
     }
 
-
-
-
-
-
-
     console.info('FLIP_CARD end')
 }
+
+
+
+function* RESIZE({payload : {size}}){
+    console.info('RESIZE begin')
+
+    yield put({
+        type: 'memory/SET_STATE',
+        payload: {...initialState, size},
+    })
+    // reinitialize
+    yield call(INITIALIZE)
+    console.info('RESIZE end')
+}
+
 
 export default function* rootSaga(api) {
     yield all([
         takeEvery(actions.INITIALIZE, INITIALIZE),
         takeEvery(actions.RESTART, RESTART),
         takeEvery(actions.FLIP_CARD, FLIP_CARD),
+        takeEvery(actions.RESIZE, RESIZE),
 
     ])
 }
