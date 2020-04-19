@@ -23,7 +23,7 @@ const  Header = ({matchedCards=0, size=18, tries=0, restart, start=true, end=fal
                     <Button onClick={()=>restart()} type="primary">Restart</Button>
                 </div>
                 <div className="resize">
-                    <Select disabled={!canFlip} defaultValue={18} style={{ width: 120 }} onChange={value=>resize(value)}>
+                    <Select disabled={!canFlip} defaultValue={size} value={size} style={{ width: 120 }} onChange={value=>resize(value)}>
                         <Option value={18} >9 Pairs</Option>
                         <Option value={24} >12 Pairs</Option>
                         <Option value={30} >15 Pairs</Option>
