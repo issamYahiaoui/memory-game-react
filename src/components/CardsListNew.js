@@ -2,13 +2,13 @@ import React from  'react'
 import Card from "./Card";
 
 
-const CardsListNew = ({cards})=> {
+const CardsListNew = ({cards, flip})=> {
 
     return (
         <div>
             <div className="playground">
                 {cards.map(card => <Card
-                    onClick={() => console.log('clicked card ', card)}
+                    onClick={()=>flip(card)}
                     key={card.id}
                     {...card}
                 />)}

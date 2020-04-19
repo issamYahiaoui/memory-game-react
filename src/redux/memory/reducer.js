@@ -5,13 +5,15 @@ export const initialState = {
     loading:false,
     error:'',
     cards : generatePlayGroundCards(),
-    round : 0,
+    round : 1,
+    tries : 0,
     guess1 : null,
     guess2 : null,
     size : 18,
-    matchedCards: 0,
+    matchedCards: [],
     startGame: false,
-    endGame: false
+    endGame: false,
+    canFlip: false
 }
 
 export default function reducer(state = initialState, action) {

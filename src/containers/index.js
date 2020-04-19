@@ -13,8 +13,8 @@ const mapDispatchToProps = (dispatch) => {
     return {
         initialize: () => dispatch({type : MemoryActions.INITIALIZE}),
         restart: () => dispatch({type : MemoryActions.RESTART}),
-        flipCard: () => dispatch({type : MemoryActions.FLIP_CARD}),
-        resize: () => dispatch({type : MemoryActions.RESIZE}),
+        flipCard: (card) => dispatch({type : MemoryActions.FLIP_CARD, payload: {card}}),
+        resize: (size) => dispatch({type : MemoryActions.RESIZE, payload :{size}}),
     }
 }
 
@@ -28,13 +28,13 @@ class App extends Component {
 
 
     render() {
-        const {  memory : {cards, size, round, matchedCards, startGame, endGame }, restart, flipCard, resize } = this.props;
+        const {  memory : {cards, size, tries, matchedCards, startGame, endGame }, restart, flipCard, resize } = this.props;
         console.log('props' , this.props)
         return (
             <div>
                <Header
                    size={size}
-                   round={round}
+                   tries={tries}
                    matchedCards={matchedCards}
                    restart={restart}
                    resize={resize}
