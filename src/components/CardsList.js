@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react'
-import {generatePlayGroundCards} from "../utils";
-import Card from "./Card";
+import {generatePlayGroundCards} from "../data/cards";
+import CardListItem from "./Card";
 
 const size = 18
-const GamePlayGround = ({cardImages}) => {
+const CardsList = ({cardImages}) => {
 
     const [cards, setCards] = useState(generatePlayGroundCards(size, cardImages));
     const [canFlip, setCanFlip] = useState(false);
@@ -183,11 +183,11 @@ const GamePlayGround = ({cardImages}) => {
                 </div>
             </div>
             <div className="playground">
-                {cards.map(card => <Card onClick={() => onCardClick(card)} key={card.id} {...card}/>)}
+                {cards.map(card => <CardListItem onClick={() => onCardClick(card)} key={card.id} {...card}/>)}
             </div>
         </div>)
 
 }
 
 
-export default GamePlayGround
+export default CardsList

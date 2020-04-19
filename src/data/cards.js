@@ -1,7 +1,7 @@
 import uuid from 'react-uuid';
 import deepcopy from "deepcopy";
 
- const shuffleArray =(array)=>{
+const shuffleArray =(array)=>{
     return array.sort(() => .5 - Math.random());
 }
 export const generatePlayGroundCards = (count, cardImages)=> {

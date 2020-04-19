@@ -1,16 +1,16 @@
 import React from 'react';
+import { Provider } from 'react-redux'
+import RootContainer from './containers'
+import createStore from './redux/reducers'
 
 import './App.scss';
-import cardImages from './cardImages';
-
-import GamePlayGround from "./components/GamePlayGround";
 
 function App() {
-
+  const store = createStore()
   return (
-    <div className="">
-      <GamePlayGround cardImages={cardImages}/>
-    </div>
+      <Provider store={store}>
+          <RootContainer />
+      </Provider>
   );
 }
 export default App;

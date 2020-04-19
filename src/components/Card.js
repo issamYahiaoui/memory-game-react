@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "./CardImage";
 
 export default function Card({imageURL, isFlipped, canFlip,onClick}) {
     return  <div className={"card" + (!isFlipped ? ' opened' : '') + (!canFlip ? ' matched' : '')} onClick={onClick}>
@@ -7,7 +6,7 @@ export default function Card({imageURL, isFlipped, canFlip,onClick}) {
             ?
         </div>
         <div className="back">
-            <Image src={imageURL}/>
+            <img alt="" src={imageURL}/>
         </div>
     </div>;
 }

@@ -16,7 +16,11 @@ body {
     flex-direction: row;
     justify-content: space-between;
     margin-bottom: 20px;
-    padding :10px
+    padding :10px;
+
+    .matched {
+      color : red
+  }
   }
   .playground {
     display: flex;

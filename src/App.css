@@ -13,6 +13,8 @@ body {
     justify-content: space-between;
     margin-bottom: 20px;
     padding: 10px; }
+    #root .header .matched {
+      color: red; }
   #root .playground {
     display: flex;
     flex-wrap: wrap;
